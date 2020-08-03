@@ -69,3 +69,23 @@ pro:线上环境source-map简洁一些：cheap-source-map:打包后的代码会�
 引入webpack-merge,webpock.common.js；把自己的内容用const来命名下：用module.exports重新导出，这个时候需要用merge进行合并
 
 ![image-20200803104221191](C:\Users\qq102\AppData\Roaming\Typora\typora-user-images\image-20200803104221191.png)
+
+## webpack和code splitting
+
+代码分割和webpack没有任何关系
+
+webpack中实现分割，两种方式：
+
+1同步代码：只需要在weback.common.js中做optimization的配置
+
+```json
+optimization{
+	splitChunks:{
+	chunks:'all'
+	}
+}
+```
+
+2异步代码（import）:异步代码，无需做任何配置，会自动进行代码分割
+
+![image-20200803214848178](C:\Users\qq102\AppData\Roaming\Typora\typora-user-images\image-20200803214848178.png)
