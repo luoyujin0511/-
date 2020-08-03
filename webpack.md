@@ -42,3 +42,30 @@ optimization{
 
 ```
 
+## develoment和production模式的区别打包
+
+区别：dev:开发环境source-map比较全，devtool:cheap-module-source-map:打包后不需要压缩，方便调试。
+
+pro:线上环境source-map简洁一些：cheap-source-map:打包后的代码会自动压缩
+
+
+
+1,分离出来3个文件：共用的，开发的，生产的。webpack.conmon.js，webpack.dev.js,webpack.prod.js
+
+2,package.json文件要进行修改，开发环境的使用webpack-dev-server;生产环境直接就是webpack;具体配置如下：
+
+​	‘’‘dev’:'webpack-dev-serve --config ./bulid/webpack.dev.js'
+
+​    ‘’‘bulid’:'webpack --config ./bulid/webpack.pord.js'
+
+![image-20200803104140933](C:\Users\qq102\AppData\Roaming\Typora\typora-user-images\image-20200803104140933.png)
+
+3, 把文件进行合并
+
+需要安装weboack-merge包：npm install weback-merge -d
+
+文件的合并：webpack.dev.js文件
+
+引入webpack-merge,webpock.common.js；把自己的内容用const来命名下：用module.exports重新导出，这个时候需要用merge进行合并
+
+![image-20200803104221191](C:\Users\qq102\AppData\Roaming\Typora\typora-user-images\image-20200803104221191.png)
