@@ -89,3 +89,15 @@ optimization{
 2异步代码（import）:异步代码，无需做任何配置，会自动进行代码分割
 
 ![image-20200803214848178](C:\Users\qq102\AppData\Roaming\Typora\typora-user-images\image-20200803214848178.png)
+
+## lazy loading 懒加载，chuk是什么
+
+lazyloding实际上就是用import()来异步按需加载模块，这样能让页面加载更快。懒加载不是webpack的概念，而是es的概念，就是import（）语法，要用babel-polyfill做兼容。
+
+![image-20200804113250714](C:\Users\qq102\AppData\Roaming\Typora\typora-user-images\image-20200804113250714.png)
+
+chunk
+
+webpack打包过程中生成的每个文件都是一个chunk
+
+minchunks：2  至少两个打包文件引入这个模块 ，才单独分割打包
