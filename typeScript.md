@@ -162,3 +162,33 @@ interface Teacher extends person {
 }  //表示teacher继承person里面所有属性，还增加了一个自身属性teach():string;
 ```
 
+## 类的定义与继承
+
+#### super的用法：
+
+当子类对继承的父类的方法重写后，还想用父类的方法则通过super.fn（）来使用
+
+```typescript
+calss Person {
+
+  name='dell';
+    getName(){
+        return this.name;
+    }
+}
+class Teacher extends Person {
+    getTeacherName(){
+        return 'Teacher';
+    }
+    getName(){
+        return super.getName()+'lee'
+    }
+}
+const teacher=new Teacher（）；
+console.log(teacher.getName)
+console.log(teacher.getTeacherName)
+//输出结果如下
+//delllee
+//Teacher
+```
+
