@@ -116,3 +116,49 @@ const =total=add({first:1,second:2})
 ```
 
 解构类型函数
+
+## 数组和元组
+
+数组：
+
+![image-20200806213726827](C:\Users\qq102\AppData\Roaming\Typora\typora-user-images\image-20200806213726827.png)
+
+元组 tuple
+
+```typescript
+const teacherInfo : [string,string,number]=['dell','male',18]
+```
+
+## lnterface接口
+
+#### 1定义
+
+接口就是开发工程中，ts帮助我们做语法提示的工具，真正在编译成js代码的时候会把ts接口的内容全部剔除掉。
+
+interface和type类似，区别：接口定义对象形式，不可以定义变量形式，type可以，能用接口尽量用接口，
+
+#### 2接口定义
+
+```typescript
+interface Person {
+	readonly name:string;  //前面添加readonly表示只读，不能赋值。
+    age?:number;  //有个？号，表示可以为空，可以不写这个属性
+    [propName:string]:any;//表示只要键是字符串，值是任何东西
+    say():string;
+}
+```
+
+#### interface继承
+
+```typescript
+interface Person {
+	readonly name:string;  //前面添加readonly表示只读，不能赋值。
+    age?:number;  //有个？号，表示可以为空，可以不写这个属性
+    [propName:string]:any;//表示只要键是字符串，值是任何东西
+    say():string;
+}
+interface Teacher extends person {
+    teach():string;
+}  //表示teacher继承person里面所有属性，还增加了一个自身属性teach():string;
+```
+
