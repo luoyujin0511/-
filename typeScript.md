@@ -192,3 +192,99 @@ console.log(teacher.getTeacherName)
 //Teacher
 ```
 
+## 类的访问类型和构造器
+
+#### pubilc
+
+定义，允许我在类的内外被调用
+
+```typescript
+class Person {
+	pubilc name:string;
+	pubilc sayHi(){
+	 console.log('hi')
+	}
+}
+const person =new  Person();
+person.name='dell'
+console.log(person.name)
+person.sayHi();
+//输出如下
+//dell
+//hi
+```
+
+#### private 
+
+允许在类内被使用
+
+```typescript
+class Person {
+	provate name:string;
+	pubilc sayHi(){
+	this.name
+	 console.log('hi')
+	}
+}
+//上面不报错。因为name在类内用。下面报错，因为name属性在类外面使用
+const person =new  Person();
+person.name='dell' //报错
+console.log(person.name)
+person.sayHi();
+//输出如下
+//dell
+//hi
+```
+
+#### protected
+
+允许在类内及集成的子类使用
+
+```typescript
+class Person {
+	protected name:string; //如果把protected改成private会报错
+	pubilc sayHi(){
+	 console.log('hi')
+	}
+}
+class Teacher extends Person {
+	public sayBye(){
+	 this.name
+	}
+}
+```
+
+#### 构造器constructor
+
+constructor被实例化的瞬间执行，下面代码：当Person被实例化的时候把dell传到了constructor里面，然后直接赋值
+
+```typescript
+class Person {
+ pubilc name:string;
+ constructor(name:string){
+ 	this.name
+ }
+}
+const person= new Person('dell')
+console.log(person.name)
+//'dell'
+```
+
+如果在子类使用了constructor的时候，需要调用super（）；
+
+```typescript
+class Person{
+	constructor(pubilc name:string){}
+}
+class Teacher extends Person {
+    constructor(pubilc age:number){
+        super('dell')
+    }
+}
+const teacher =new Teacher(28)
+console.log(teacher.age)
+console.log(teacher.name)
+//28
+//dell
+```
+
