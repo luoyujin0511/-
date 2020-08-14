@@ -288,3 +288,41 @@ console.log(teacher.name)
 //dell
 ```
 
+## 静态属性，Setter和Getter
+
+通过get和set属性的调用保护私有变量
+
+#### get
+
+```typescript
+class Person {
+	constructor(private name:string){}
+    get getName(){
+        return this.name;
+    }
+}
+const person =new Person('dell')
+console.log(person.getName);
+//dell
+```
+
+#### set
+
+```typescript
+class Person {
+	constructor(private _name:string){}
+    get Name(){
+        return this._name+'lee';
+    }
+    set name(name:string){
+    const realName=name.split('')[0];
+    this._name=reaclName;
+    }
+}
+const person =new Person('dell')
+console.log(person.getName);
+person.name='dell lee'
+//dell lee
+//dell lee
+```
+
