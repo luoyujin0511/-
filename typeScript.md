@@ -423,3 +423,26 @@ const conuntNumber =new ConuntNumber(10,20)
 console.log(conuntNumber.calcalate())
 ```
 
+## 命名空间
+
+关键词namespace 
+
+防止命名污染
+
+
+
+```typescript
+namespace MyMath{
+
+export const PI =3.14
+export function calcCrcrcle(value:number){
+    return value*PI
+}
+
+}
+const PI =2.88
+console.log(MyMath.PI) //3.14
+console.log(PI) //2.88
+console.log(MyMath.calcCrcrcle(1)) //3.14
+```
+
