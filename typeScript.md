@@ -1,4 +1,4 @@
-## typeScrit的定义
+typeScrit的定义
 
 typescript是javaScript的超级，ts会编译成js后才能在浏览器执行
 
@@ -324,5 +324,102 @@ console.log(person.getName);
 person.name='dell lee'
 //dell lee
 //dell lee
+```
+
+#### static
+
+静态属性和方法,直接用类调用不需要new出实例化调用
+
+```typescript
+class Person {
+    static PI:number =3.14;
+    static valcCircle（value:number）:number{
+        return this.PI*value
+    }
+
+}
+
+console.log(Person.PI);
+console.log(Person.valcCircle(8));
+//3.14
+//25.34
+```
+
+
+
+## 枚举
+
+关键词：enum
+
+```typescript
+enum Color{
+black,  //0
+asd, //1
+yellow=100, //100
+Red			//101
+}
+```
+
+## 泛型Generic的函数
+
+根据你传的数据来判断这是什么类型的变量（推断类型）
+
+#### 在函数中输入泛型
+
+```typescript
+function identify<T>(arg:T):T{
+	return arg;
+}
+//明确指定类型输出
+console.log(identify<string>('hi'))
+//交给ts推断类型
+console.log(identify(true))
+```
+
+#### 在接口中使用泛型
+
+```typescript
+interface GenericIdentify<T> {
+ <T>(arg:T):T
+}
+function identify<T>(arg:T):T{
+	return arg;
+}
+let myIdentify:GenericIdentify=identify
+console.log(myIdentify(30))
+```
+
+#### 为泛型添加约束extends
+
+extends {length:any}的意思是泛型数据中必须要有length这个属性，不然报错
+
+```typescript
+function getLength<T extends {length:any}>(obj:T):any{
+	return obj.length
+}
+const obj ={
+    name:'迷失'，
+    age:30,
+    length:10
+}
+console.log(getLength(obj))
+```
+
+#### 泛型应用到class
+
+```typescript
+class ConuntNumber<T extends number >{
+	number1:T;
+    number2:T;
+    constructor(num1:T,num2:T,){
+        this.number1=num1
+        this.number2=num2
+    }
+    calcalate():number{
+        return +this.number1* +this.number2;
+    }
+}
+const conuntNumber =new ConuntNumber(10,20)
+console.log(conuntNumber.calcalate())
 ```
 
